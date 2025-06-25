@@ -11,6 +11,7 @@ from visualization_3d import afficher_plan_3d
 from config import GRAINES
 from optimisation_plateaux import generer_configurations_standard
 
+
 # --------------------
 # 🎛️ CONFIGURATION DE LA PAGE
 # --------------------
