@@ -3,7 +3,7 @@
 def generer_configurations_standard(
     longueur_dispo,
     largeur_dispo,
-    tailles_plateaux=[(0.7, 0.3), (0.6, 0.4), (1.0, 0.5)],
+    tailles_plateaux=[(0.7, 0.3), (0.6, 0.4), (1.0, 0.5) (0.8, 0.4)],
     niveaux=7,
     plateaux_par_niveau=4,
     production_par_plateau=8,
