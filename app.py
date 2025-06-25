@@ -5,7 +5,35 @@ from visualization_2d import afficher_plan_2d
 from visualization_3d import afficher_plan_3d
 from config import GRAINES
 from optimisation_plateaux import generer_configurations_standard
+from optimisation_plateaux import generer_configurations_standard
+import pandas as pd
 
+# Exemple après les calculs principaux
+st.subheader("🧠 Mode Optimisation (Plateaux / Surface)")
+
+if st.button("Lancer l'optimisation"):
+    configurations = generer_configurations_standard(
+        longueur_dispo=result["longueur"],
+        largeur_dispo=result["largeur"],
+        objectif_journalier=result["objectif"],
+        production_par_plateau=result["rendement_plateau"],
+        niveaux=result["niveaux"],
+        plateaux_par_niveau=result["plateaux_par_niveau"]
+    )
+
+    if configurations:
+        st.success(f"{len(configurations)} configurations générées.")
+        top3 = configurations[:3]
+
+        for idx, conf in enumerate(top3, start=1):
+            st.markdown(f"### 🧩 Option {idx}")
+            st.write(f"📦 Plateau : {int(conf['plateau_L']*100)} × {int(conf['plateau_l']*100)} cm")
+            st.write(f"🔁 Orientation : {conf['orientation']}")
+            st.write(f"📐 Surface/rack : {conf['surface_rack']} m²")
+            st.write(f"🧱 Racks max installables : {conf['racks_max']}")
+            st.write(f"📊 Plateaux totaux : {conf['total_plateaux']}")
+            st.write(f"🌾 Production estimée : {conf['production']} kg")
+            st.write(f"🎯 Objectif atteint : {'✅ Oui' if conf['objectif_atteint'] else
 st.set_page_config(page_title="Simulateur Fourrage Hydroponique", layout="wide")
 st.title("🌱 Simulateur Hydroponique Pro")
 
