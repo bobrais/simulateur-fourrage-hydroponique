@@ -68,8 +68,18 @@ with col1:
 with col2:
     st.subheader("🔁 Planning de rotation (7 jours)")
     rotation = generer_rotation(result["plateaux_total"])
-    for jour, infos in rotation.items():
-        st.write(f"{jour} : Semis {infos['semis']} – Pousse {infos['pousse']} – Récolte {infos['récolte']}")
+   for jour, infos in rotation.items():
+    if jour == "J0":
+        st.markdown(f"**{jour}** — Stock initial de plateaux : **{infos['stock_initial']}**")
+    else:
+        st.markdown(
+            f"**{jour}** ➤ "
+            f"Semis : `{infos['semis']}` | "
+            f"Pousse : `{infos['pousse']}` | "
+            f"Récolte : `{infos['récolte']}` | "
+            f"Stock restant : `{infos['stock_restant']}`"
+        )
+
 
 st.divider()
 st.subheader("🧱 Visualisation 2D")
