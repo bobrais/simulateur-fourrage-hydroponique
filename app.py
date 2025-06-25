@@ -11,7 +11,6 @@ from visualization_3d import afficher_plan_3d
 from config import GRAINES
 from optimisation_plateaux import generer_configurations_standard
 
-
 # --------------------
 # 🎛️ CONFIGURATION DE LA PAGE
 # --------------------
@@ -143,4 +142,5 @@ afficher_plan_2d(result["racks"], result["niveaux"], result["plateaux_par_niveau
 
 st.subheader("📦 Visualisation 3D")
 afficher_plan_3d(result["racks"], result["niveaux"], result["plateaux_par_niveau"])
+
 
