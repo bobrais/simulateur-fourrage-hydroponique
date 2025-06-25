@@ -107,11 +107,10 @@ if st.button("Lancer l'optimisation"):
     configurations = generer_configurations_standard(
         longueur_dispo=params["longueur"],
         largeur_dispo=params["largeur"],
+        hauteur_dispo=params["hauteur"],
+        hauteur_plateau=params["hauteur_niveau"],
         objectif_journalier=params["objectif"],
-        
-        production_par_plateau = GRAINES[graine]["rendement_cycle_kg"],
-
-        niveaux=result["niveaux"],
+        production_par_plateau=GRAINES[graine]["rendement_cycle_kg"],
         plateaux_par_niveau=result["plateaux_par_niveau"]
     )
 
@@ -125,6 +124,7 @@ if st.button("Lancer l'optimisation"):
             st.write(f"🔁 Orientation : {conf['orientation']}")
             st.write(f"📐 Surface/rack : {conf['surface_rack']} m²")
             st.write(f"🧱 Racks max installables : {conf['racks_max']}")
+            st.write(f"🪜 Niveaux par rack : {conf['niveaux']}")
             st.write(f"📊 Plateaux totaux : {conf['total_plateaux']}")
             st.write(f"🌾 Production estimée : {conf['production']} kg")
             st.write(f"🎯 Objectif atteint : {'✅ Oui' if conf['objectif_atteint'] else '❌ Non'}")
