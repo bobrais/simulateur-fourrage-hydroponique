@@ -4,6 +4,7 @@ from rotation import generer_rotation
 from visualization_2d import afficher_plan_2d
 from visualization_3d import afficher_plan_3d
 from config import GRAINES
+from optimisation_plateaux import generer_configurations_standard
 
 st.set_page_config(page_title="Simulateur Fourrage Hydroponique", layout="wide")
 st.title("🌱 Simulateur Hydroponique Pro")
