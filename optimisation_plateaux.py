@@ -8,12 +8,14 @@ def generer_configurations_standard(
     tailles_plateaux=[(0.7, 0.3), (0.6, 0.4), (1.0, 0.5), (0.8, 0.4)],
     plateaux_par_niveau=4,
     production_par_plateau=8,
-    objectif_journalier=None
+    objectif_journalier=None,
+    marge_hauteur=0.3  # Espace libre (en mètres) en haut du rack, par défaut 30 cm
 ):
     configurations = []
 
-    # Nombre de niveaux calculé dynamiquement selon la hauteur disponible
-    niveaux = max(1, int(hauteur_dispo // hauteur_plateau))
+    # Calculer la hauteur réellement utilisable (on déduit la marge de sécurité)
+    hauteur_utilisable = max(0, hauteur_dispo - marge_hauteur)
+    niveaux = max(1, int(hauteur_utilisable // hauteur_plateau))
 
     for L, l in tailles_plateaux:
         for orientation in ["longueur_face", "largeur_face"]:
@@ -24,7 +26,7 @@ def generer_configurations_standard(
                 largeur_rack = l * 2
                 profondeur_rack = L * 2
 
-            # Placement en grille (pavage au sol)
+            # Placement au sol (grille réaliste)
             nb_racks_largeur = int(largeur_dispo // largeur_rack)
             nb_racks_longueur = int(longueur_dispo // profondeur_rack)
             racks_max = nb_racks_largeur * nb_racks_longueur
