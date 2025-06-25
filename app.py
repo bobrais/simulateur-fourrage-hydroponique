@@ -108,7 +108,9 @@ if st.button("Lancer l'optimisation"):
         longueur_dispo=params["longueur"],
         largeur_dispo=params["largeur"],
         objectif_journalier=params["objectif"],
-        production_par_plateau=GRAINES[graine]["rendement_plateau"],
+        
+        production_par_plateau = GRAINES[graine]["rendement_cycle_kg"],
+
         niveaux=result["niveaux"],
         plateaux_par_niveau=result["plateaux_par_niveau"]
     )
