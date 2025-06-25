@@ -116,7 +116,7 @@ if st.button("Lancer l'optimisation"):
         production_par_plateau=result["rendement_plateau"],
         niveaux=result["niveaux"],
         plateaux_par_niveau=result["plateaux_par_niveau"]
-    )
+    
 
     if configurations:
         st.success(f"{len(configurations)} configurations générées.")
