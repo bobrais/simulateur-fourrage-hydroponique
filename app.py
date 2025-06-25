@@ -70,9 +70,9 @@ with col2:
     rotation = generer_rotation(result["plateaux_total"])
     for jour, infos in rotation.items():
         if jour == "J0":
-        st.markdown(f"**{jour}** — Stock initial de plateaux : **{infos['stock_initial']}**")
+            st.markdown(f"**{jour}** — Stock initial de plateaux : **{infos['stock_initial']}**")
         else:
-        st.markdown(
+            st.markdown(
             f"**{jour}** ➤ "
             f"Semis : `{infos['semis']}` | "
             f"Pousse : `{infos['pousse']}` | "
