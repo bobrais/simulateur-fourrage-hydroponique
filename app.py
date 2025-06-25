@@ -105,10 +105,13 @@ with col2:
 st.subheader("🧠 Mode Optimisation (Plateaux / Surface)")
 
 if st.button("Lancer l'optimisation"):
+    
     configurations = generer_configurations_standard(
-        longueur_dispo = params["longueur"],
-        largeur_dispo = params["largeur"],
-
+        longueur_dispo=params["longueur"],
+        largeur_dispo=params["largeur"],
+        objectif_journalier=params["objectif"],  # ← ici la correction
+        ...
+    )
         objectif_journalier=result["objectif"],
         production_par_plateau=result["rendement_plateau"],
         niveaux=result["niveaux"],
