@@ -1,7 +1,8 @@
 
 # visualization_2d.py
+import streamlit as st
 
-import matplotlib.pyplot as plt
+
 
 def afficher_plan_2d(racks, niveaux, plateaux_par_niveau):
     fig, ax = plt.subplots(figsize=(10, 6))
