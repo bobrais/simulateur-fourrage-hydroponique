@@ -1,5 +1,6 @@
 
 # 🌱 Simulateur Fourrage Hydroponique
+[![Deploy to Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://streamlit.io/deploy?repository=https://github.com/bobrais/simulateur-fourrage-hydroponique)
 
 Cette application Streamlit permet de simuler une production de fourrage hydroponique dans un espace défini, avec choix du type de graine, visualisation des besoins en racks, planification des rotations, et représentation 2D/3D.
 
