@@ -68,7 +68,7 @@ with col1:
 with col2:
     st.subheader("🔁 Planning de rotation (7 jours)")
     rotation = generer_rotation(result["plateaux_total"])
-   for jour, infos in rotation.items():
+    for jour, infos in rotation.items():
     if jour == "J0":
         st.markdown(f"**{jour}** — Stock initial de plateaux : **{infos['stock_initial']}**")
     else:
