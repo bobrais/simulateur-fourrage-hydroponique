@@ -3,13 +3,17 @@
 def generer_configurations_standard(
     longueur_dispo,
     largeur_dispo,
+    hauteur_dispo,
+    hauteur_plateau=0.35,
     tailles_plateaux=[(0.7, 0.3), (0.6, 0.4), (1.0, 0.5), (0.8, 0.4)],
-    niveaux=7,
     plateaux_par_niveau=4,
     production_par_plateau=8,
     objectif_journalier=None
 ):
     configurations = []
+
+    # Nombre de niveaux calculé dynamiquement selon la hauteur disponible
+    niveaux = max(1, int(hauteur_dispo // hauteur_plateau))
 
     for L, l in tailles_plateaux:
         for orientation in ["longueur_face", "largeur_face"]:
@@ -20,20 +24,24 @@ def generer_configurations_standard(
                 largeur_rack = l * 2
                 profondeur_rack = L * 2
 
-            surface_rack = largeur_rack * profondeur_rack
-            surface_totale = longueur_dispo * largeur_dispo
-            max_racks = int(surface_totale // surface_rack)
-            total_plateaux = max_racks * niveaux * plateaux_par_niveau
+            # Placement en grille (pavage au sol)
+            nb_racks_largeur = int(largeur_dispo // largeur_rack)
+            nb_racks_longueur = int(longueur_dispo // profondeur_rack)
+            racks_max = nb_racks_largeur * nb_racks_longueur
+
+            total_plateaux = racks_max * niveaux * plateaux_par_niveau
             production_theorique = total_plateaux * production_par_plateau
 
             configurations.append({
                 "plateau_L": L,
                 "plateau_l": l,
                 "orientation": orientation,
-                "surface_rack": round(surface_rack, 3),
-                "racks_max": max_racks,
+                "surface_rack": round(largeur_rack * profondeur_rack, 3),
+                "racks_max": racks_max,
+                "niveaux": niveaux,
+                "plateaux_par_niveau": plateaux_par_niveau,
                 "total_plateaux": total_plateaux,
-                "production": production_theorique,
+                "production": round(production_theorique, 2),
                 "objectif_atteint": objectif_journalier is not None and production_theorique >= objectif_journalier
             })
 
