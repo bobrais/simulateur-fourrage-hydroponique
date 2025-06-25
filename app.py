@@ -104,12 +104,11 @@ with col2:
 st.subheader("🧠 Mode Optimisation (Plateaux / Surface)")
 
 if st.button("Lancer l'optimisation"):
-
     configurations = generer_configurations_standard(
         longueur_dispo=params["longueur"],
         largeur_dispo=params["largeur"],
         objectif_journalier=params["objectif"],
-        production_par_plateau=result["rendement_plateau"],
+        production_par_plateau=GRAINES[graine]["rendement_plateau"],
         niveaux=result["niveaux"],
         plateaux_par_niveau=result["plateaux_par_niveau"]
     )
@@ -142,5 +141,6 @@ afficher_plan_2d(result["racks"], result["niveaux"], result["plateaux_par_niveau
 
 st.subheader("📦 Visualisation 3D")
 afficher_plan_3d(result["racks"], result["niveaux"], result["plateaux_par_niveau"])
+
 
 
