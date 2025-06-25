@@ -7,7 +7,7 @@ from config import GRAINES
 from optimisation_plateaux import generer_configurations_standard
 from optimisation_plateaux import generer_configurations_standard
 import pandas as pd
-
+st.set_page_config(page_title="Simulateur Fourrage Hydroponique", layout="wide")
 # Exemple après les calculs principaux
 st.subheader("🧠 Mode Optimisation (Plateaux / Surface)")
 
@@ -33,7 +33,9 @@ if st.button("Lancer l'optimisation"):
             st.write(f"🧱 Racks max installables : {conf['racks_max']}")
             st.write(f"📊 Plateaux totaux : {conf['total_plateaux']}")
             st.write(f"🌾 Production estimée : {conf['production']} kg")
-            st.write(f"🎯 Objectif atteint : {'✅ Oui' if conf['objectif_atteint'] else
+            st.write(f"🎯 Objectif atteint : {'✅ Oui' if conf['objectif_atteint'] else '❌ Non'}")
+
+
 st.set_page_config(page_title="Simulateur Fourrage Hydroponique", layout="wide")
 st.title("🌱 Simulateur Hydroponique Pro")
 
