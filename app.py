@@ -10,6 +10,7 @@ from visualization_2d import afficher_plan_2d
 from visualization_3d import afficher_plan_3d
 from config import GRAINES
 from optimisation_plateaux import generer_configurations_standard
+from visualisation_racks import afficher_rack_vertical 
 
 # --------------------
 # 🎛️ CONFIGURATION DE LA PAGE
@@ -117,6 +118,16 @@ if st.button("Lancer l'optimisation"):
     if configurations:
         st.success(f"{len(configurations)} configurations générées.")
         top3 = configurations[:3]
+        for idx, conf in enumerate(top3, start=1):
+            st.markdown(f"### 🧩 Option {idx}")
+            st.write(f"📦 Plateau : {int(conf['plateau_L']*100)} × {int(conf['plateau_l']*100)} cm")
+            st.write(f"🔁 Orientation : {conf['orientation']}")
+            st.write(f"📐 Surface/rack : {conf['surface_rack']} m²")
+            st.write(f"🧱 Racks max installables : {conf['racks_max']}")
+            st.write(f"🪜 Niveaux par rack : {conf['niveaux']}")
+            st.write(f"📊 Plateaux totaux : {conf['total_plateaux']}")
+            st.write(f"🌾 Production estimée : {conf['production']} kg")
+            st.write(f"🎯 Objectif atteint : {'✅ Oui' if conf['objectif_atteint'] else '❌ Non'}")
 
         for idx, conf in enumerate(top3, start=1):
             st.markdown(f"### 🧩 Option {idx}")
@@ -133,7 +144,14 @@ if st.button("Lancer l'optimisation"):
         df = pd.DataFrame(configurations)
         st.markdown("### 📋 Tableau comparatif des configurations")
         st.dataframe(df, use_container_width=True)
+ # 🧱 VISUALISATION DU RACK VERTICAL
+    afficher_rack_vertical(
+        niveaux=conf["niveaux"],
+        hauteur_dispo=params["hauteur"],
+        hauteur_plateau=params["hauteur_niveau"]
+    )
 
+    st.markdown("---")
 # --------------------
 # VISUALISATIONS
 # --------------------
