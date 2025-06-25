@@ -1,14 +1,14 @@
 # optimisation_plateaux.py
 
-def generer_configurations_standard(
-    longueur_dispo,
-    largeur_dispo,
-    tailles_plateaux=[(0.7, 0.3), (0.6, 0.4), (1.0, 0.5)],
-    niveaux=7,
-    plateaux_par_niveau=4,
-    production_par_plateau=8,
-    objectif_journalier=None
-):
+configurations = generer_configurations_standard(
+    longueur_dispo=params["longueur"],
+    largeur_dispo=params["largeur"],
+    objectif_journalier=params["objectif"],
+    production_par_plateau=result["rendement_plateau"],
+    niveaux=result["niveaux"],
+    plateaux_par_niveau=result["plateaux_par_niveau"]
+)
+:
     configurations = []
 
     for L, l in tailles_plateaux:
