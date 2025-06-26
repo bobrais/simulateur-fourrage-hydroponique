@@ -11,7 +11,7 @@ from visualization_3d import afficher_plan_3d
 from config import GRAINES
 from optimisation_plateaux import generer_configurations_standard
 from visualisation_racks import afficher_rack_vertical 
-
+from visualisation_grille import afficher_grille_racks
 # --------------------
 # 🎛️ CONFIGURATION DE LA PAGE
 # --------------------
